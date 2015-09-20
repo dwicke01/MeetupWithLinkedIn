@@ -1,5 +1,7 @@
 target 'MeetupWithLinkedIn' do
 
+pod 'Alamofire'
+
 end
 
 use_frameworks!
