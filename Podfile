@@ -1,10 +1,13 @@
+use_frameworks!
+
 target 'MeetupWithLinkedIn' do
 
+pod 'Moya'
 pod 'Alamofire'
+pod 'SwiftyJSON'
+pod 'Locksmith'
 
 end
-
-use_frameworks!
 
 def testing_pods
 

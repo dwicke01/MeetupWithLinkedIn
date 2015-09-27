@@ -10,6 +10,8 @@
 		583D5865EEA997B4A2CB6098 /* Pods_MeetupWithLinkedIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47306C4E9D2FC96C9297070B /* Pods_MeetupWithLinkedIn.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		943E3C2787053DC3C9727773 /* Pods_MeetupWithLinkedInTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C060628E42E049B640AFA0D /* Pods_MeetupWithLinkedInTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9DDEFBA21A9FE7067F08C139 /* Pods_MeetupWithLinkedInUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84395AADDE01EDC7EAAFBA5 /* Pods_MeetupWithLinkedInUITests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		FA2798A41BB4D0B80009B348 /* MeetupAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2798A31BB4D0B80009B348 /* MeetupAPI.swift */; settings = {ASSET_TAGS = (); }; };
+		FA4C25181BB706C300F6E250 /* MeetupOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C25171BB706C300F6E250 /* MeetupOAuth.swift */; settings = {ASSET_TAGS = (); }; };
 		FA92BC151BA8CBA10006B1AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92BC141BA8CBA10006B1AE /* AppDelegate.swift */; };
 		FA92BC171BA8CBA10006B1AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92BC161BA8CBA10006B1AE /* ViewController.swift */; };
 		FA92BC1A1BA8CBA10006B1AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA92BC181BA8CBA10006B1AE /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		8C060628E42E049B640AFA0D /* Pods_MeetupWithLinkedInTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetupWithLinkedInTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF72ACCF2011376B98CF84C3 /* Pods-MeetupWithLinkedInTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetupWithLinkedInTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MeetupWithLinkedInTests/Pods-MeetupWithLinkedInTests.release.xcconfig"; sourceTree = "<group>"; };
 		C84395AADDE01EDC7EAAFBA5 /* Pods_MeetupWithLinkedInUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetupWithLinkedInUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA2798A31BB4D0B80009B348 /* MeetupAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupAPI.swift; sourceTree = "<group>"; };
+		FA4C25171BB706C300F6E250 /* MeetupOAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetupOAuth.swift; sourceTree = "<group>"; };
 		FA92BC111BA8CBA10006B1AE /* MeetupWithLinkedIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupWithLinkedIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA92BC141BA8CBA10006B1AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA92BC161BA8CBA10006B1AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				FA92BC1D1BA8CBA10006B1AE /* LaunchScreen.storyboard */,
 				FA92BC201BA8CBA10006B1AE /* Info.plist */,
 				FA92BC421BA8CBD60006B1AE /* Constants.swift */,
+				FA2798A31BB4D0B80009B348 /* MeetupAPI.swift */,
+				FA4C25171BB706C300F6E250 /* MeetupOAuth.swift */,
 			);
 			path = MeetupWithLinkedIn;
 			sourceTree = "<group>";
@@ -429,9 +435,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2798A41BB4D0B80009B348 /* MeetupAPI.swift in Sources */,
 				FA92BC171BA8CBA10006B1AE /* ViewController.swift in Sources */,
 				FA92BC151BA8CBA10006B1AE /* AppDelegate.swift in Sources */,
 				FA92BC431BA8CBD60006B1AE /* Constants.swift in Sources */,
+				FA4C25181BB706C300F6E250 /* MeetupOAuth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,7 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MeetupWithLinkedIn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = danielwickes.MeetupWithLinkedIn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danielwickes.MeetupWithLinkedIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -588,7 +596,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MeetupWithLinkedIn/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = danielwickes.MeetupWithLinkedIn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danielwickes.MeetupWithLinkedIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
