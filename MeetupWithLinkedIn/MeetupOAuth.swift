@@ -16,7 +16,6 @@ class MeetupOAuth {
     
     static let sharedInstance = MeetupOAuth()
  
-    var OAuthToken : String?
     
     func loadGroups() {
         if !MeetupOAuth.sharedInstance.hasOAuthToken() {
@@ -24,9 +23,12 @@ class MeetupOAuth {
         }
     }
     
+    var OAuthToken : String?
+    var refreshToken : String?
+    
     func hasOAuthToken() -> Bool {
         
-        return false
+        return OAuthToken != nil
     }
     
     func startOAuth2Login() {
@@ -75,28 +77,27 @@ class MeetupOAuth {
         Alamofire.request(.POST, getTokenPath, parameters: tokenParams)
             .responseJSON {
                 (request, response, result) in
-                guard let json = result.value else {
+                guard let json : AnyObject = result.value else {
                     return
                 }
                 
-                guard let maybe_access_token = json["access_token"] else {
-                    return
-                }
-                
-                guard let access_token = maybe_access_token else {
-                    return
-                }
-                self.OAuthToken = access_token as? String
+                self.parseOAuthToken(json)
+                self.parseRefreshToken(json)
         }
-            //.responseString { (request, response, results) in
-                // TODO: handle response to extract OAuth token
-              //  print(response)
-                
-        //}
-        
-        // TODO: implement
     }
     
+    func parseOAuthToken(json : AnyObject) {
+        guard let access_token : String? = json["access_token"] as? String else {
+            return
+        }
+        self.OAuthToken = access_token
+    }
     
+    func parseRefreshToken(json :AnyObject) {
+        guard let refreshToken : String? = json["refresh_token"] as? String else {
+            return
+        }
+        self.refreshToken = refreshToken
+    }
     
 }
