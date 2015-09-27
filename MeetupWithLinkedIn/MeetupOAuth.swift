@@ -27,25 +27,25 @@ class MeetupOAuth {
     var refreshToken : String?
     
     func hasOAuthToken() -> Bool {
-        
-        return OAuthToken != nil
+        guard let token = self.OAuthToken else {
+            return false
+        }
+        return !token.isEmpty
     }
     
     func startOAuth2Login() {
-        //var oAuth2URLAuthorize = oAuth2URL.URLByAppendingPathComponent(authorizeArgs) adding characters between the paths for some reason
-        //let g = oAuth2URL.URLByAppendingPathComponent(authorizeArgs, isDirectory: true) same issue as the other one
-
         let oAuth2URLAuthorizeWithoutWeirdBug = NSURL(string : oAuth2URL.URLString.stringByAppendingString(authorizeArgs))
-        guard let unwrappedURL = oAuth2URLAuthorizeWithoutWeirdBug else {
+        guard let unwrappedURL : NSURL = oAuth2URLAuthorizeWithoutWeirdBug else {
             return
         }
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(true, forKey: "loadingOAuthToken")
+        
         UIApplication.sharedApplication().openURL(unwrappedURL)
     }
     
     func processOAuthStep1Response(url: NSURL)
     {
-        //print(url)
-        
         let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
         var code:String?
         
@@ -77,6 +77,10 @@ class MeetupOAuth {
         Alamofire.request(.POST, getTokenPath, parameters: tokenParams)
             .responseJSON {
                 (request, response, result) in
+                
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setBool(false, forKey: "loadingOAuthToken")
+                
                 guard let json : AnyObject = result.value else {
                     return
                 }
